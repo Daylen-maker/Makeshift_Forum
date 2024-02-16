@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const authRoutes = require('./routes/authRoutes.js');
 const cors = require('cors');
-require('dotenv').config(); // Load environment variables
+require('dotenv').config();
 
 const app = express();
 const PORT = 2020;
