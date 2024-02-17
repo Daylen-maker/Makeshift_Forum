@@ -1,4 +1,4 @@
-const { Post, Community, Comment, User } = require('../schemas/schemas');
+const { Post, Community, Comment } = require('../schemas/schemas');
 
 exports.addCommunity = async (req, res) => {
   try {
@@ -18,23 +18,28 @@ exports.addCommunity = async (req, res) => {
 
 exports.addComment = async (req, res) => {
   try {
-    const { postId, author, content } = req.body;
+    const { postId, parentCommentId, author, content } = req.body;
     if (!content) {
       return res.status(400).json({ message: 'Content is required' });
     }
-    const post = await Post.findById(postId);
-    if (!post) {
-      return res.status(404).json({ message: 'Post not found' });
+    let newComment;
+    if (postId) {
+      newComment = new Comment({
+        post: postId,
+        author,
+        content,
+      });
+    } else if (parentCommentId) {
+      newComment = new Comment({
+        parentComment: parentCommentId,
+        author,
+        content,
+      });
+    } else {
+      return res.status(400).json({ message: 'Either postId or parentCommentId is required' });
     }
-    const newComment = new Comment({
-      author,
-      content,
-    });
-    await newComment.save(); // Save comment separately
-    post.comments.push(newComment._id); // Push comment ID instea
-    console.log({ newComment });
-    console.log({ post });
-    await post.save();
+
+    await newComment.save();
     res.status(201).json(newComment);
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -148,7 +153,7 @@ exports.patchPost = async (req, res) => {
 
 exports.getPosts = async (req, res) => {
   try {
-    const posts = await Post.find().populate('comments');
+    const posts = await Post.find();
     res.status(200).json(posts);
   } catch (err) {
     res.status(500).json({ message: err.message });

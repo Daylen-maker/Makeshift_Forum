@@ -5,13 +5,13 @@ const usePostRequest = (url) => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const postData = async (data) => {
+  const post = async (data) => {
     setIsLoading(true);
     try {
       const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
+        body: JSON.stringify(data),
       };
       const res = await fetch(url, requestOptions);
       const jsonData = await res.json();
@@ -23,7 +23,7 @@ const usePostRequest = (url) => {
     }
   };
 
-  return { response, error, isLoading, postData };
+  return { response, error, isLoading, post };
 };
 
 export default usePostRequest;
