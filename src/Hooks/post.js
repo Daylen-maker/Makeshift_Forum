@@ -1,9 +1,13 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+
 const baseUrl = 'http://localhost:2020';
-const usePostRequest = (url) => {
+
+const usePostRequest = (url, listenOnPageReset) => {
   const [response, setResponse] = useState(null);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const { reset } = useSelector((state) => state.user);
 
   const post = async (data) => {
     setIsLoading(true);
@@ -22,6 +26,12 @@ const usePostRequest = (url) => {
       setIsLoading(false);
     }
   };
+
+  useEffect(() => {
+    if (reset?.page === listenOnPageReset && listenOnPageReset) {
+      post();
+    }
+  }, [reset?.page, reset?.shouldReset]);
 
   return { response, error, isLoading, post };
 };

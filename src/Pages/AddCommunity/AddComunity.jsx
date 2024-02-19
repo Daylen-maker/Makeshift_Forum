@@ -2,12 +2,15 @@ import { useEffect, useState } from 'react';
 import usePostRequest from '../../hooks/post';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { reset } from '../../redux/actions';
 
 export const AddCommunity = () => {
   const { response, post } = usePostRequest('/community/add');
   const navigate = useNavigate();
   const [error, setError] = useState('');
-  const handleCreateCommunity = (event) => {
+  const dispatch = useDispatch();
+
+  const handleCreateCommunity = async (event) => {
     event.preventDefault();
     const target = event.target.elements;
     const name = target.name.value;
@@ -15,7 +18,8 @@ export const AddCommunity = () => {
     const logo = target.logo.value;
     const backgroundImage = target.backgroundImg.value;
     const token = localStorage.getItem('token');
-    post({ name, description, token, logo, backgroundImage });
+    await post({ name, description, token, logo, backgroundImage });
+    dispatch(reset('NAV_COMMUNITIES'));
   };
 
   useEffect(() => {
@@ -27,6 +31,7 @@ export const AddCommunity = () => {
       }
     }
   }, [response]);
+
   return (
     <form onSubmit={handleCreateCommunity} className='creation-form creation-form_community'>
       <input type='text' name='name' placeholder='Community name' required />

@@ -1,8 +1,9 @@
-import { LOGIN, LOGOUT } from './actions';
+import { LOGIN, LOGOUT, RESET } from './actions';
 
 const initialState = {
   username: null,
   role: null,
+  reset: { page: null, shouldReset: false },
 };
 
 const userReducer = (state = initialState, action) => {
@@ -15,6 +16,14 @@ const userReducer = (state = initialState, action) => {
       };
     case LOGOUT:
       return initialState;
+    case RESET:
+      return {
+        ...state,
+        reset: {
+          page: action.payload.page,
+          shouldReset: !state.reset.shouldReset,
+        },
+      };
     default:
       return state;
   }

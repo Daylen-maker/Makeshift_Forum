@@ -2,11 +2,13 @@ import { useEffect, useState } from 'react';
 import usePostRequest from '../../../hooks/post';
 import './SideToolbar.css';
 export const SideToolbar = () => {
-  const { response, post } = usePostRequest('/community/get');
+  const { response, post } = usePostRequest('/community/get', 'NAV_COMMUNITIES');
   const [communities, setCommunities] = useState([]);
+
   useEffect(() => {
     post();
   }, []);
+
   useEffect(() => {
     if (response) {
       setCommunities(response);
