@@ -46,7 +46,7 @@ exports.login = async (req, res) => {
       return res.status(401).json({ message: 'Invalid password' });
     }
 
-    res.status(200).json({ token: jwtToken, username: user.username, role: user.role });
+    res.status(200).json({ message: 'success', token: jwtToken, username: user.username, role: user.role });
   } catch (error) {
     console.log({ error });
     res.status(500).json({ message: 'Error logging in', error });

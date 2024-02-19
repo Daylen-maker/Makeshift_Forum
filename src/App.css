@@ -19,7 +19,7 @@
   --sub-text: #83959b;
   --highlight-red: #ac3b1a;
   --highlight-blue: #5852cd;
-  --divider: #9f9f9f;
+  --divider: #3c4345;
   --error: #ff6e7f;
 }
 
@@ -33,8 +33,4 @@
   background-color: var(--background-dark);
   color: var(--text-dark);
   min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: start;
-  padding-top: 5rem;
 }

@@ -1,0 +1,72 @@
+/* Top toolbar */
+.top-toolbar {
+  position: sticky;
+  padding: 4px;
+  top: 0;
+  height: 3rem;
+  border-bottom: 1px solid var(--divider);
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+}
+.toolbar-button {
+  height: 100%;
+  border-radius: 1rem;
+  padding: 4px 8px;
+  border: none;
+  margin-left: 4px;
+  background-color: var(--background-dark);
+  color: var(--text-dark);
+  cursor: pointer;
+}
+.toolbar-button:hover {
+  background-color: var(--input-hover-dark);
+}
+.left_top-toolbar img {
+  height: 100%;
+}
+.left_top-toolbar button {
+  height: 100%;
+}
+.left_top-toolbar {
+  display: flex;
+  gap: 4px;
+}
+.top-toolbar_search {
+  display: flex;
+}
+.top-toolbar_search button {
+  height: 100%;
+  border-radius: 2rem;
+  padding: 4px;
+  border: none;
+  margin-left: 8px;
+  background-color: var(--background-dark);
+  color: var(--text-dark);
+  cursor: pointer;
+}
+.top-toolbar_search input {
+  border: none;
+  padding: 12px;
+  margin: 2px;
+  border-radius: 1rem;
+  background-color: var(--input-dark);
+  color: var(--text-dark);
+  width: 600px;
+}
+.top-toolbar_search input:focus {
+  outline: none;
+}
+.top-toolbar_search button img {
+  height: 100%;
+}
+
+.logout-button,
+.login-button {
+  background-color: var(--button-primary);
+}
+.logout-button:hover,
+.login-button:hover {
+  background-color: var(--button-primary-hover);
+}

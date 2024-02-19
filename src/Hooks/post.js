@@ -1,5 +1,5 @@
 import { useState } from 'react';
-
+const baseUrl = 'http://localhost:2020';
 const usePostRequest = (url) => {
   const [response, setResponse] = useState(null);
   const [error, setError] = useState(null);
@@ -13,7 +13,7 @@ const usePostRequest = (url) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       };
-      const res = await fetch(url, requestOptions);
+      const res = await fetch(baseUrl + url, requestOptions);
       const jsonData = await res.json();
       setResponse(jsonData);
       setIsLoading(false);

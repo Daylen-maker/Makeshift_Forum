@@ -6,7 +6,7 @@ export const Register = () => {
   const navigate = useNavigate();
   const [role, setRole] = useState('user');
   const [error, setError] = useState();
-  const { response, post } = usePostRequest('http://localhost:2020/register');
+  const { response, post } = usePostRequest('/register');
 
   const handleRegister = (event) => {
     event.preventDefault();

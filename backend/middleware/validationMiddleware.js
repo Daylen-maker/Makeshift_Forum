@@ -33,7 +33,7 @@ module.exports = {
     next();
   },
   noInappropriateWords: (req, res, next) => {
-    const { username, message, content, header } = req.body;
+    const { username } = req.body;
     if (filter.isProfane(username)) {
       return res.status(400).json({ message: 'Inappropriate username.' });
     }

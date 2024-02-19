@@ -1,0 +1,38 @@
+.side-toolbar {
+  text-align: center;
+  padding: 1rem;
+  width: 11rem;
+  height: 100%;
+  border-right: 1px solid var(--divider);
+}
+.content {
+  width: 1300px;
+  display: grid;
+  grid-template-columns: 1fr 10fr;
+  min-height: calc(100vh - 3rem);
+  padding-right: 11rem;
+  margin: auto;
+  text-align: center;
+}
+
+.community-select_container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.community-select {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 4px;
+  height: 1.4rem;
+}
+.community-select img {
+  border-radius: 100%;
+  width: 1.4rem;
+}
+.divider {
+  background-color: var(--divider);
+  height: 1px;
+  margin: 0.4rem 0;
+}

@@ -9,7 +9,7 @@ import './login.css';
 
 export const Login = () => {
   const clientId = '1008424428159-jjha99kdc7n7orcv6oivc9pfe56hvkp6.apps.googleusercontent.com';
-  const { response, post } = usePostRequest('http://localhost:2020/login');
+  const { response, post } = usePostRequest('/login');
   const dispatch = useDispatch();
   const [autoLogin, setAutoLogin] = useState();
   const [loginError, setLoginError] = useState();
@@ -42,7 +42,7 @@ export const Login = () => {
         localStorage.setItem('token', response.token);
         localStorage.setItem('autoLogin', autoLogin);
         console.log(response, 'successful login ');
-        navigate('/main');
+        navigate('/');
       }
     }
   }, [response]);
