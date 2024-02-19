@@ -33,9 +33,16 @@ module.exports = {
     next();
   },
   noInappropriateWords: (req, res, next) => {
-    const { username } = req.body;
+    const { username, message, content, header } = req.body;
     if (filter.isProfane(username)) {
-      return res.status(400).json({ message: 'Inappropriate word detected.' });
+      return res.status(400).json({ message: 'Inappropriate username.' });
+    }
+    next();
+  },
+  validAge: (req, res, next) => {
+    const { age } = req.body;
+    if (age > 40) {
+      return res.status(400).json({ message: 'To Old' });
     }
     next();
   },

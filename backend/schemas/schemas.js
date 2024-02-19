@@ -1,3 +1,4 @@
+const { type } = require('@testing-library/user-event/dist/type');
 const mongoose = require('mongoose');
 
 // Comment Schema
@@ -43,7 +44,12 @@ const userSchema = new mongoose.Schema(
     username: { type: String, required: true, unique: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    role: { type: String, enum: ['user', 'moderator'], default: 'user' },
+    role: { type: String, enum: ['User', 'Admin', 'Guest'], default: 'User' },
+    age: { type: Number },
+    gender: { type: String, enum: ['Male', 'Female'] },
+    firstName: { type: String },
+    lastName: { type: String },
+    address: { type: String },
   },
   { timestamps: true }
 );

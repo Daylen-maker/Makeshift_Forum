@@ -10,9 +10,10 @@ router.post(
   validationMiddleware.validPassword,
   validationMiddleware.validEmail,
   validationMiddleware.noInappropriateWords,
+  validationMiddleware.validAge,
   authController.register
 );
-router.post('/login', validationMiddleware.validPassword, validationMiddleware.validEmail, authController.login);
+router.post('/login', validationMiddleware.validEmail, authController.login);
 router.post('/autoLogin', validationMiddleware.validToken, authController.autoLogin);
 
 // Posts

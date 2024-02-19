@@ -1,29 +1,40 @@
-import { useState } from 'react';
+:root {
+  --background-dark: #0e1a1c;
+  --background-white: #ffffff;
+  --background-white-secondary: #f9fafa;
+  --background-hover: #131f23;
+  --input-dark: #1a282d;
+  --input-light: #1a282d;
+  --input-light-secondary: #ebedef;
+  --input-hover-dark: #213237;
+  --input-hover-light: #f1f4f5;
+  --button-primary: #d93b01;
+  --button-primary-hover: #962901;
+  --button-secondary: #1a282d;
+  --button-secondary-hover: #213237;
+  --suggestions: #5286d5;
+  --suggestions-hover: #8aaad4;
+  --text-dark: #f1f4f5;
+  --text-light: #000000;
+  --sub-text: #83959b;
+  --highlight-red: #ac3b1a;
+  --highlight-blue: #5852cd;
+  --divider: #9f9f9f;
+  --error: #ff6e7f;
+}
 
-const usePostRequest = (url) => {
-  const [response, setResponse] = useState(null);
-  const [error, setError] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
-
-  const postData = async (data) => {
-    setIsLoading(true);
-    try {
-      const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      };
-      const res = await fetch(url, requestOptions);
-      const jsonData = await res.json();
-      setResponse(jsonData);
-      setIsLoading(false);
-    } catch (error) {
-      setError(error);
-      setIsLoading(false);
-    }
-  };
-
-  return { response, error, isLoading, postData };
-};
-
-export default usePostRequest;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.App {
+  background-color: var(--background-dark);
+  color: var(--text-dark);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  padding-top: 5rem;
+}

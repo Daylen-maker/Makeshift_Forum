@@ -1,0 +1,95 @@
+/* CSS for login/ register form */
+.authentication-form {
+  width: 34rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  background-color: #0e1a1c;
+  border: 2px solid var(--divider);
+  border-radius: 12px;
+  padding: 1rem 5rem;
+}
+.authentication-form h3 {
+  margin-top: 2rem;
+  margin-bottom: 10px;
+}
+.authentication-form .link {
+  cursor: pointer;
+  color: var(--suggestions);
+  margin-left: 4px;
+  margin-right: 4px;
+  text-decoration: none;
+}
+.authentication-form .link:hover {
+  color: var(--suggestions-hover);
+}
+.authentication-form .form p,
+.authentication-form .form div {
+  display: flex;
+  font-size: 0.8rem;
+}
+.authentication-form .form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.authentication-form > p {
+  margin-bottom: 1rem;
+  font-size: 0.8rem;
+}
+
+.authentication-form input,
+.authentication-form select {
+  padding: 8px 20px;
+  border: 2px solid var(--input-dark);
+  background-color: var(--input-dark);
+  color: var(--text-dark);
+}
+.authentication-form input:hover {
+  background-color: var(--input-hover-dark);
+  border: 2px solid var(--input-hover-dark);
+}
+.authentication-form .error {
+  color: var(--error);
+}
+.authentication-form .input-error {
+  border: 2px solid var(--error);
+}
+.authentication-form .input-error:hover {
+  border: 2px solid var(--error);
+}
+.authentication-form .or-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.authentication-form .line {
+  flex: 1;
+  height: 1px;
+  background-color: var(--divider);
+}
+
+.authentication-form .or-text {
+  white-space: nowrap;
+  color: var(--divider);
+  padding: 0 10px;
+  font-size: 0.8rem;
+}
+
+.authentication-form .submit-button {
+  border-radius: 2rem;
+  font-size: 1.25rem;
+  background-color: var(--button-primary);
+  border: none;
+  color: var(--text-dark);
+  padding: 12px 8px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+.authentication-form .submit-button:hover {
+  border: none;
+  background-color: var(--button-primary-hover);
+}
