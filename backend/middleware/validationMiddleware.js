@@ -46,4 +46,25 @@ module.exports = {
     }
     next();
   },
+  isImage: (req, res, next) => {
+    const { logo, backgroundImage, images } = req.body;
+    const imagePattern = /\.(jpg|jpeg|png|webp|avif|gif|svg)$/i;
+
+    if (logo && !imagePattern.test(logo)) {
+      return res.status(400).json({ message: 'Invalid logo URL.' });
+    }
+    if (backgroundImage && !imagePattern.test(backgroundImage)) {
+      return res.status(400).json({ message: 'Invalid backgroundImage URL.' });
+    }
+    if (images) {
+      for (let index = 0; index < images.length; index++) {
+        let isValid = !imagePattern.test(images[index]);
+        if (!isValid) {
+        } else {
+          return res.status(400).json({ message: 'Invalid image URL.' });
+        }
+      }
+    }
+    next();
+  },
 };

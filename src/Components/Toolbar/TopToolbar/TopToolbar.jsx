@@ -15,10 +15,11 @@ export const TopToolbar = () => {
   return (
     <div className='top-toolbar toolbar'>
       <div className='left_top-toolbar'>
-        <button className='toolbar-button'>
-          <img src='https://www.shareicon.net/download/2016/07/23/800413_text_512x512.png' alt='' />
-        </button>
-        <img src='https://theme.zdassets.com/theme_assets/551444/e21895715996666bf323d40a7c7b7111153885b9.png' alt='' />
+        <img
+          onClick={() => navigate('/')}
+          src='https://theme.zdassets.com/theme_assets/551444/e21895715996666bf323d40a7c7b7111153885b9.png'
+          alt=''
+        />
       </div>
 
       <form className='top-toolbar_search' action=''>
@@ -35,7 +36,11 @@ export const TopToolbar = () => {
                 Add community
               </button>
             )}
-            {state.role && <button className='toolbar-button'>Add Post</button>}
+            {state.role && (
+              <button onClick={() => navigate('/add/post')} className='toolbar-button'>
+                Add Post
+              </button>
+            )}
             <button className='toolbar-button'>Profile Options</button>
           </>
         )}

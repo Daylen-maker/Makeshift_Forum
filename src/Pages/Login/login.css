@@ -1,4 +1,7 @@
 /* CSS for login/ register form */
+.authentication-form_container {
+  padding-top: 4rem;
+}
 .authentication-form {
   width: 34rem;
   margin: 0 auto;
@@ -92,4 +95,8 @@
 .authentication-form .submit-button:hover {
   border: none;
   background-color: var(--button-primary-hover);
+}
+.checkbox {
+  display: flex;
+  gap: 4px;
 }

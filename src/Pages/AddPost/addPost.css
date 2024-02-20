@@ -1,0 +1,15 @@
+.add-image-button {
+  width: 1.4rem;
+  border-radius: 100%;
+  padding: 2px;
+  font-weight: bold;
+  border: none;
+  text-align: center;
+  background-color: var(--highlight-blue);
+  cursor: pointer;
+}
+.creation-form_select {
+  color: var(--text-dark);
+  background-color: var(--input-dark);
+  padding: 8px 4px;
+}

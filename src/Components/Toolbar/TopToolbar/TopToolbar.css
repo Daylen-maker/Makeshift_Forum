@@ -4,6 +4,7 @@
   padding: 4px;
   top: 0;
   height: 3rem;
+  background-color: var(--background-dark);
   border-bottom: 1px solid var(--divider);
   width: 100%;
   text-align: center;

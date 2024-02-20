@@ -57,55 +57,49 @@ export const Login = () => {
     gapi.load('client: auth2', start);
   }, []);
   return (
-    <div className='authentication-form'>
-      <h3>Log in</h3>
-      <p>
-        By continuing, you agree to our
-        <a className='link' href={`${window.location.origin}/UserAgreement`} target='_blank' rel='noopener noreferrer'>
-          User Agreement
-        </a>
-        and acknowledge that you understand the
-        <a className='link' href={`${window.location.origin}/PrivacyPolicy`} target='_blank' rel='noopener noreferrer'>
-          Privacy Policy
-        </a>
-        .
-      </p>
-      <GoogleLogin
-        clientId={clientId}
-        buttonText='Continue with Google'
-        onSuccess={handleGoogleLoginSuccess}
-        onFailure={handleGoogleLoginFailure}
-        cookiePolicy={'single_host_origin'}
-      />
-      <div className='or-divider'>
-        <div className='line'></div>
-        <span className='or-text'>OR</span>
-        <div className='line'></div>
-      </div>
-      <form className='form' onSubmit={handleLogin}>
-        <input className={loginError && `input-error`} type='text' placeholder='Email' name='email' />
-        <input className={loginError && `input-error`} type='password' placeholder='Password' name='password' />
-        <div className='error'>{loginError}</div>
-        <div className='checkbox'>
-          <input type='checkbox' name='autoLogin' />
-          <div>Keep me logged in</div>
+    <div className='authentication-form_container'>
+      <div className='authentication-form'>
+        <h3>Log in</h3>
+        <p>
+          By continuing, you agree to our
+          <a className='link' href={`${window.location.origin}/UserAgreement`} target='_blank' rel='noopener noreferrer'>
+            User Agreement
+          </a>
+          and acknowledge that you understand the
+          <a className='link' href={`${window.location.origin}/PrivacyPolicy`} target='_blank' rel='noopener noreferrer'>
+            Privacy Policy
+          </a>
+          .
+        </p>
+        <GoogleLogin
+          clientId={clientId}
+          buttonText='Continue with Google'
+          onSuccess={handleGoogleLoginSuccess}
+          onFailure={handleGoogleLoginFailure}
+          cookiePolicy={'single_host_origin'}
+        />
+        <div className='or-divider'>
+          <div className='line'></div>
+          <span className='or-text'>OR</span>
+          <div className='line'></div>
         </div>
-
-        <p>
-          Forgot your
-          <p className='link' onClick={() => navigate('/recover')}>
-            Password
+        <form className='form' onSubmit={handleLogin}>
+          <input className={loginError && `input-error`} type='text' placeholder='Email' name='email' />
+          <input className={loginError && `input-error`} type='password' placeholder='Password' name='password' />
+          <div className='error'>{loginError}</div>
+          <div className='checkbox'>
+            <input type='checkbox' name='autoLogin' />
+            <div>Keep me logged in</div>
+          </div>
+          <p>
+            New to Reddit ?
+            <p className='link' onClick={() => navigate('/register')}>
+              Sign Up
+            </p>
           </p>
-          ?
-        </p>
-        <p>
-          New to Reddit ?
-          <p className='link' onClick={() => navigate('/register')}>
-            Sign Up
-          </p>
-        </p>
-        <input className='submit-button' type='submit' value='Log in' />
-      </form>
+          <input className='submit-button' type='submit' value='Log in' />
+        </form>
+      </div>
     </div>
   );
 };
