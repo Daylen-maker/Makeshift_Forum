@@ -1,11 +1,17 @@
 import { useEffect, useState } from 'react';
 import usePostRequest from '../../hooks/post';
 import './profile.css';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
 export const Profile = () => {
   const token = localStorage.getItem('token');
   const { response: profileData, post: getProfile, isLoading: loadingProfile } = usePostRequest('/user/get');
   const { post: updateProfile } = usePostRequest('/user/update');
+
   const userData = profileData?.data;
+  const userStatus = useSelector((state) => state.user);
+  const navigate = useNavigate();
 
   const [updateUser, setUpdateUser] = useState({
     username: false,
@@ -26,10 +32,16 @@ export const Profile = () => {
   });
 
   useEffect(() => {
+    if (!userStatus) {
+      navigate('/login');
+    }
+  }, [userStatus, navigate]);
+
+  useEffect(() => {
     if (token) {
       getProfile({ token });
     }
-  }, [updateUser, token]);
+  }, [updateUser]);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -41,12 +53,14 @@ export const Profile = () => {
     const updateData = { [dataType]: formData[dataType] };
     updateProfile({ token, user: updateData }).then(() => {
       setUpdateUser((prev) => ({ ...prev, [dataType]: false }));
+      // Optionally trigger a state change to re-fetch user data
       getProfile({ token });
     });
   };
 
   const toggleEdit = (dataType) => {
     setUpdateUser((prev) => ({ ...prev, [dataType]: !prev[dataType] }));
+    // Reset formData for the dataType being toggled to its current value or an empty string
     setFormData((prev) => ({ ...prev, [dataType]: userData[dataType] || '' }));
   };
 
@@ -62,9 +76,9 @@ export const Profile = () => {
               <h3 className='profile-username'>{userData?.username}</h3>
             </div>
             <div className='profile-email'>Email: {userData?.email}</div>
-            <div className='profile-age'> Age: {userData?.age}</div>
-            <div className='profile-firstName'>Name:{userData?.firstName}</div>
-            <div className='profile-lastName'>Surname:{userData?.lastName}</div>
+            <div className='profile-age'>Age: {userData?.age}</div>
+            <div className='profile-firstName'>Name: {userData?.firstName}</div>
+            <div className='profile-lastName'>Surname: {userData?.lastName}</div>
             <div className='profile-gender'>Gender: {userData?.gender}</div>
             <div className='profile-role'>Role: {userData?.role}</div>
           </div>
@@ -77,8 +91,8 @@ export const Profile = () => {
                     <form onSubmit={(e) => handleUpdateUser(e, field)} className='edit-form'>
                       <select name={field} value={formData[field]} onChange={handleInputChange} className='edit-select edit-input'>
                         <option value=''>Select Gender</option>
-                        <option value='male'>Male</option>
-                        <option value='female'>Female</option>
+                        <option value='Male'>Male</option>
+                        <option value='Female'>Female</option>
                       </select>
                       <input type='submit' value='Update' className='edit-submit' />
                     </form>
@@ -90,6 +104,8 @@ export const Profile = () => {
                         value={formData[field]}
                         onChange={handleInputChange}
                         className='edit-input'
+                        min={field === 'age' ? '6' : undefined}
+                        max={field === 'age' ? '100' : undefined}
                       />
                       <input type='submit' value='Update' className='edit-submit' />
                     </form>

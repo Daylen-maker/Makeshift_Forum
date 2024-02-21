@@ -50,3 +50,6 @@
   color: #d7dadc;
   text-align: start;
 }
+.post:hover .post-title {
+  text-decoration: underline;
+}

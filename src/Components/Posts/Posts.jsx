@@ -13,7 +13,7 @@ export const Posts = ({ selectedCommunity }) => {
   return (
     <div className='community-posts'>
       {response?.map((post, i) => (
-        <div key={i} onClick={() => navigate(`./${post._id}`)} className='post'>
+        <div key={i} onClick={() => navigate(`/community/${post.communityId}/${post._id}`)} className='post'>
           <div className='post-header'>
             <img
               src={selectedCommunity?.logo || 'https://upload.wikimedia.org/wikipedia/commons/5/59/Empty.png'}

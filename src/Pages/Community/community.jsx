@@ -20,8 +20,7 @@ export const Community = () => {
       setPosts(response);
     }
   }, [response]);
-  console.log(selectedCommunity);
-  console.log(posts);
+
   if (isLoading || !response || !selectedCommunity) {
     return null;
   }

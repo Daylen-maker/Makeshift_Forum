@@ -11,6 +11,7 @@ export const TopToolbar = () => {
     localStorage.setItem('autoLogin', false);
     localStorage.setItem('token', null);
     dispatch(logout());
+    navigate('/');
   };
   return (
     <div className='top-toolbar toolbar'>
