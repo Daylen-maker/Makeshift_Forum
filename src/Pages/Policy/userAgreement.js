@@ -49,7 +49,7 @@ export const UserAgreement = () => {
             primary user.
           </p>
         </section>
-      </div>{' '}
+      </div>
     </div>
   );
 };

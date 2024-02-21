@@ -53,14 +53,12 @@ export const Profile = () => {
     const updateData = { [dataType]: formData[dataType] };
     updateProfile({ token, user: updateData }).then(() => {
       setUpdateUser((prev) => ({ ...prev, [dataType]: false }));
-      // Optionally trigger a state change to re-fetch user data
       getProfile({ token });
     });
   };
 
   const toggleEdit = (dataType) => {
     setUpdateUser((prev) => ({ ...prev, [dataType]: !prev[dataType] }));
-    // Reset formData for the dataType being toggled to its current value or an empty string
     setFormData((prev) => ({ ...prev, [dataType]: userData[dataType] || '' }));
   };
 

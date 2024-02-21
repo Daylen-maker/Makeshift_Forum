@@ -19,7 +19,6 @@ export const useAutoLogin = () => {
     if (response) {
       if (response.message === 'Auto-login successful') {
         dispatch(login(response.user.username, response.user.role));
-        console.log('successful login ');
       }
     }
   }, [response]);

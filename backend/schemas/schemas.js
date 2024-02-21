@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 
-// Comment Schema
 const commentSchema = new mongoose.Schema({
   postId: { type: String, required: true },
   author: { type: String, required: true },
@@ -15,7 +14,6 @@ const commentSchema = new mongoose.Schema({
   likes: { type: Number, default: 0 },
 });
 
-// Post Schema
 const postSchema = new mongoose.Schema({
   communityId: { type: String, required: true },
   author: { type: String, required: true },
@@ -32,7 +30,6 @@ const postSchema = new mongoose.Schema({
   },
 });
 
-// Community Schema
 const communitySchema = new mongoose.Schema({
   name: { type: String, required: true },
   description: { type: String, required: true },
@@ -47,7 +44,6 @@ const communitySchema = new mongoose.Schema({
   },
 });
 
-// User Schema
 const userSchema = new mongoose.Schema({
   username: { type: String, required: true, unique: true },
   email: { type: String, required: true, unique: true },
@@ -68,7 +64,6 @@ const userSchema = new mongoose.Schema({
   },
 });
 
-// Export models
 module.exports = {
   Post: mongoose.model('Post', postSchema),
   Comment: mongoose.model('Comment', commentSchema),

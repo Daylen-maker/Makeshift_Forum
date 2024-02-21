@@ -39,7 +39,7 @@ export const PrivacyPolicy = () => {
           <h2>Contact Us</h2>
           <p>If you have any complaints, suggestions, or jokes better than ours, please send them to us. We love a good laugh!</p>
         </section>
-      </div>{' '}
+      </div>
     </div>
   );
 };

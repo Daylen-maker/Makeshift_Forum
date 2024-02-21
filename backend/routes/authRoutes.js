@@ -5,6 +5,9 @@ const router = express.Router();
 const controller = require('../controllers/controller');
 
 // Login / Register
+
+router.post('/login', validationMiddleware.validEmail, authController.login);
+router.post('/autoLogin', validationMiddleware.validToken, authController.autoLogin);
 router.post(
   '/register',
   validationMiddleware.validPassword,
@@ -12,8 +15,6 @@ router.post(
   validationMiddleware.noInappropriateWords,
   authController.register
 );
-router.post('/login', validationMiddleware.validEmail, authController.login);
-router.post('/autoLogin', validationMiddleware.validToken, authController.autoLogin);
 
 // User
 router.post('/user/get', controller.getUser);

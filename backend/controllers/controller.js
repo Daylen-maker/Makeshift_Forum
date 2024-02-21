@@ -1,7 +1,6 @@
 const { Post, Community, Comment, User } = require('../schemas/schemas');
 const jwt = require('jsonwebtoken');
 
-// Get Methods
 exports.getCommunities = async (req, res) => {
   try {
     const communities = await Community.find();
@@ -48,7 +47,6 @@ exports.getComments = async (req, res) => {
   }
 };
 
-// Add Methods
 exports.addCommunity = async (req, res) => {
   try {
     let { name, description, backgroundImage, logo } = req.body;
@@ -107,7 +105,6 @@ exports.addComment = async (req, res) => {
   }
 };
 
-// Delete Methods
 exports.deleteCommunity = async (req, res) => {
   try {
     const { id } = req.body;
@@ -147,7 +144,6 @@ exports.deleteComment = async (req, res) => {
   }
 };
 
-// Patch Methods
 exports.patchCommunity = async (req, res) => {
   try {
     const { name, description, backgroundImage, logo, id } = req.body;
