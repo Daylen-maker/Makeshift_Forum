@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import usePostRequest from '../../hooks/post';
 import { useEffect } from 'react';
 import { CommentForm } from '../../Components/CommentForm/CommentForm';
+import './post.css';
 
 export const Post = () => {
   const { communityId, postId } = useParams();

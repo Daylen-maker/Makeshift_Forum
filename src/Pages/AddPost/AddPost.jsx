@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import usePostRequest from '../../hooks/post';
 import './addPost.css';
 
 export const AddPost = () => {
-  const { communityId } = useParams();
   const navigate = useNavigate();
   const { response, post } = usePostRequest('/posts/add');
   const [error, setError] = useState('');

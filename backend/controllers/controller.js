@@ -1,4 +1,5 @@
-const { Post, Community, Comment } = require('../schemas/schemas');
+const { Post, Community, Comment, User } = require('../schemas/schemas');
+const jwt = require('jsonwebtoken');
 
 // Get Methods
 exports.getCommunities = async (req, res) => {
@@ -43,7 +44,7 @@ exports.getComments = async (req, res) => {
     const comments = await Comment.find({ postId });
     res.status(200).json(comments);
   } catch (err) {
-    res.status(500).json([]);
+    res.status(500).json({ message: err.message });
   }
 };
 
@@ -197,5 +198,45 @@ exports.patchComment = async (req, res) => {
     res.status(200).json({ message: 'success' });
   } catch (err) {
     res.status(500).json({ message: err.message });
+  }
+};
+
+exports.getUser = async (req, res) => {
+  const { token } = req.body;
+  try {
+    const decodedToken = jwt.verify(token, process.env.SECRET_KEY);
+    const user = await User.findById(decodedToken.userId);
+    res.status(200).json({ message: 'success', data: user });
+  } catch (error) {
+    res.status(401).json({ message: 'Invalid token', error });
+  }
+};
+
+exports.updateUser = async (req, res) => {
+  const { token, user: userData } = req.body;
+  if (!token) {
+    return res.status(401).send({ message: 'No token provided.' });
+  }
+  let decodedToken;
+  try {
+    decodedToken = jwt.verify(token, process.env.SECRET_KEY);
+  } catch (error) {
+    return res.status(401).send({ message: 'Invalid token.' });
+  }
+  if (!decodedToken || !decodedToken.userId) {
+    return res.status(401).send({ message: 'Unauthorized: Token is invalid or expired.' });
+  }
+  try {
+    const result = await User.findByIdAndUpdate(decodedToken.userId, { $set: userData }, { new: true, runValidators: true });
+    if (!result) {
+      return res.status(404).send({ message: 'User not found.' });
+    }
+    res.status(200).send({ message: 'User updated successfully.' });
+  } catch (error) {
+    console.error('Update User Error:', error);
+    if (error.name === 'ValidationError') {
+      return res.status(400).send({ message: 'Validation Error', details: error.message });
+    }
+    res.status(500).send({ message: 'Internal Server Error' });
   }
 };

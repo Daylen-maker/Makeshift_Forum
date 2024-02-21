@@ -12,6 +12,7 @@ import { AddPost } from './Pages/AddPost/AddPost';
 import { Community } from './Pages/Community/community';
 import { Main } from './Pages/Main/Main';
 import { Post } from './Pages/Post/post';
+import { Profile } from './Pages/Profile/Profile';
 
 function App() {
   useAutoLogin();
@@ -45,6 +46,14 @@ function App() {
             element={
               <Toolbar>
                 <AddCommunity />
+              </Toolbar>
+            }
+          />
+          <Route
+            path='/profile'
+            element={
+              <Toolbar>
+                <Profile />
               </Toolbar>
             }
           />

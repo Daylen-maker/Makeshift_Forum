@@ -15,6 +15,10 @@ router.post(
 router.post('/login', validationMiddleware.validEmail, authController.login);
 router.post('/autoLogin', validationMiddleware.validToken, authController.autoLogin);
 
+// User
+router.post('/user/get', controller.getUser);
+router.post('/user/update', validationMiddleware.validToken, controller.updateUser);
+
 // Posts
 router.post('/posts/add', validationMiddleware.isImage, validationMiddleware.validToken, controller.addPost);
 router.post('/posts/patch', validationMiddleware.isImage, validationMiddleware.validToken, controller.patchPost);

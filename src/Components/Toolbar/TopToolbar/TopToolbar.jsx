@@ -21,8 +21,7 @@ export const TopToolbar = () => {
           alt=''
         />
       </div>
-
-      <form className='top-toolbar_search' action=''>
+      <form onSubmit={() => handleSearch} className='top-toolbar_search' action=''>
         <input type='text' name='search' placeholder='Search for posts' />
         <button onClick={() => handleSearch()} className='search-button'>
           <img src='https://cdn-icons-png.flaticon.com/512/4570/4570468.png' alt='' />
@@ -41,7 +40,9 @@ export const TopToolbar = () => {
                 Add Post
               </button>
             )}
-            <button className='toolbar-button'>Profile Options</button>
+            <button onClick={() => navigate('/profile')} className='toolbar-button'>
+              Profile Options
+            </button>
           </>
         )}
         {state.username ? (

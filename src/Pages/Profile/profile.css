@@ -1,0 +1,67 @@
+.profile-info {
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  padding: 3rem;
+}
+.profile-info > div {
+  width: 300px;
+  text-align: start;
+}
+.profile-user {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.profile-user img {
+  border-radius: 50%;
+}
+.profile-username {
+  font-size: 2rem;
+}
+
+.profile-image {
+  height: 60px;
+}
+
+.edit-profile {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  width: 400px;
+}
+.edit-input {
+  border: 2px solid var(--button-secondary-hover);
+  background-color: var(--input-dark);
+  padding: 4px 8px;
+  width: 80%;
+  color: var(--text-dark);
+}
+
+.edit-submit {
+  border: 2px solid var(--input-dark);
+  background-color: var(--input-dark);
+  color: var(--text-dark);
+  cursor: pointer;
+  padding: 4px 8px;
+  width: calc(19%);
+  margin-left: 4px;
+}
+.edit-submit:hover {
+  background-color: var(--button-secondary-hover);
+}
+.edit-button {
+  border: 2px solid var(--input-light);
+  background-color: var(--input-dark);
+  cursor: pointer;
+  color: var(--text-dark);
+  padding: 4px 8px;
+}
+.edit-button:hover {
+  background-color: var(--button-secondary-hover);
+}
