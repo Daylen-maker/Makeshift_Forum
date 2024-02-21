@@ -36,14 +36,14 @@ export const Post = () => {
     <div className='post-page'>
       <div className='post-container'>
         {isPostLoading ? (
-          <div>Loading post...</div>
+          <div></div>
         ) : (
           filteredPost && (
             <div className='post'>
               <h2 className='post-title'>{filteredPost.title}</h2>
               <div className='post-meta'>
-                <span className='post-author'>{filteredPost.author}</span>
                 <span className='post-timestamp'>{filteredPost.timestamp}</span>
+                <span className='post-author'>User: {filteredPost.author}</span>
               </div>
               <div className='post-content'>{filteredPost.content}</div>
               <div className='post-likes'>{filteredPost.likes} likes</div>
@@ -51,27 +51,26 @@ export const Post = () => {
           )
         )}
       </div>
-
-      <div className='divider'></div>
-
+      <CommentForm postId={postId} refresh={getData} />
       <div className='comments-container'>
         {isCommentLoading ? (
-          <div>Loading comments...</div>
+          <div></div>
         ) : (
           commentResponse &&
           !commentResponse?.message &&
           commentResponse?.map((comment) => (
             <div key={comment._id} className='comment'>
-              <div className='comment-author'>{comment.author}</div>
-              <div className='comment-timestamp'>{comment.timestamp}</div>
+              <div className='dis-flex'>
+                <div className='comment-timestamp'>Added: {comment.timestamp}</div>
+                <div className='comment-author'>By: {comment.author}</div>
+              </div>
+
               <div className='comment-content'>{comment.comment}</div>
               <div className='comment-likes'>{comment.likes} likes</div>
             </div>
           ))
         )}
       </div>
-
-      <CommentForm postId={postId} refresh={getData} />
     </div>
   );
 };

@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import usePostRequest from '../../hooks/post';
 import { useParams } from 'react-router-dom';
-import { reset } from '../../redux/actions';
-
+import './commentForm.css';
 export const CommentForm = ({ refresh }) => {
   const { post, response } = usePostRequest('/comment/add');
-  const dispatch = useDispatch();
   const [error, setError] = useState('');
   const { username } = useSelector((state) => state.user);
   const { postId } = useParams();
@@ -27,13 +25,12 @@ export const CommentForm = ({ refresh }) => {
   }, [response]);
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor='comment'>Your Comment:</label>
+    <form className='comment-form' onSubmit={handleSubmit}>
+      <div className='comment-textarea'>
         <textarea name='comment' rows={4} placeholder='Type your comment here...' />
         <div className='comment-error'>{error}</div>
       </div>
-      <input type='submit' value={'Submit Comment'}></input>
+      <input className='addComment-button' type='submit' value={'Submit Comment'}></input>
     </form>
   );
 };

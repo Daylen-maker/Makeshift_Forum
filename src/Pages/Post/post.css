@@ -1,0 +1,75 @@
+.post-container {
+  color: var(--text-dark);
+  background-color: var(--input-light);
+  padding: 20px;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.post {
+  background-color: var(--input-hover-dark);
+  margin-bottom: 20px;
+  padding: 15px;
+  border-radius: 4px;
+  text-align: start;
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.post-title {
+  margin: 0;
+  color: #d7dadc;
+  font-size: 18px;
+}
+
+.post:hover .post-title {
+  text-decoration: underline;
+}
+
+.post-info,
+.post-meta {
+  /* Assuming similar styles for post metadata */
+  display: flex;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--sub-text);
+  margin-bottom: 10px;
+}
+
+.post-timestamp,
+.post-likes,
+.post-author {
+  margin-bottom: 5px;
+}
+
+.post-content {
+  color: #d7dadc;
+  text-align: start;
+}
+.comments-container {
+  background-color: var(--input-dark);
+}
+.comments-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px;
+  background-color: var(--input-dark);
+}
+.comment {
+  border-radius: 10px;
+  padding: 8px;
+  background-color: var(--input-hover-dark);
+  text-align: start;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.comment-timestamp,
+.comment-author,
+.comment-likes {
+  color: var(--sub-text);
+}

@@ -44,3 +44,7 @@
   width: 2rem;
   height: 2rem;
 }
+.dis-flex {
+  display: flex;
+  gap: 4px;
+}

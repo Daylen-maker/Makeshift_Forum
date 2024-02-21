@@ -1,4 +1,5 @@
 .community-posts {
+  margin: 10px;
   color: var(--text-dark);
   background-color: var(--input-light);
   padding: 20px;
